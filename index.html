@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Four</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+
+    <!-- The HTML content inside the body tag defines a simple calculator interface. It includes an input field to display user input and results, followed by buttons for numbers, operators, and special functions like clear (C), backspace (CE), and parentheses. The buttons are grouped in div containers for structured layout. The script tag at the end contains JavaScript functions to handle user interactions and perform calculations. -->
+
+    <div class="calculator">
+        <p>Jerian Gianna A. Morales</p> <!-- Name of Creator :> -->
+        <input type="text" id="display" readonly> <!-- Display for input/output -->
+
+        <!-- The Div containers group buttons logically for proper structure -->
+
+        <!-- Number and operator buttons -->
+        <div>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+        </div>
+        <div>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+        </div>
+        <div>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="operator" onclick="appendToDisplay('*')">*</button>
+        </div>
+        <div>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            <button class="operator" onclick="appendToDisplay('%')">%</button>
+        </div>
+
+        <!-- Special function buttons -->
+        <div>
+            <button id="checkResult" onclick="calculate()">=</button>
+            <button class="operator" onclick="appendToDisplay('**')">^</button>
+            <button class="other" onclick="appendToDisplay('(')">(</button>
+            <button class="other" onclick="appendToDisplay(')')">)</button>
+        </div>
+
+        <!-- Clear and backspace buttons -->
+        <div>
+            <button class="bigBtn" onclick="clearDisplay()">C</button>
+            <button class="bigBtn" onclick="backspace()">CE</button>
+        </div>
+    </div>
+
+    <script>
+        let resultDisplayed = false; // Tracks if result was just displayed
+
+        // Description(Functions): The JavaScript functions handle user interactions such as adding input, clearing display, backspacing, and calculating results
+
+        // Appends clicked button value to the display
+        function appendToDisplay(value) {
+            let display = document.getElementById('display');
+
+            // If the user enters a number after a result, reset display
+            if (resultDisplayed && !isNaN(value)) {
+                display.value = value; // Replace result with new number
+            } else {
+                display.value += value; // Continue normal input
+            }
+
+            resultDisplayed = false; // Reset flag unless "=" is pressed again
+        }
+        // Clears the display
+        function clearDisplay() {
+            if (document.getElementById('display').value !== '') {
+                document.getElementById('display').value = '';
+            }
+            resultDisplayed = false;
+        }
+
+        // Removes the last character from the display
+        function backspace() {
+            let display = document.getElementById('display');
+            if (display.value.length > 0) {
+                display.value = display.value.slice(0, -1);
+            }
+        }
+
+
+        // Evaluates the entered mathematical expression
+        function calculate() {
+            try {
+                let display = document.getElementById('display');
+                let expression = display.value.replace('^', '**'); // Replace ^ with **
+                let result = new Function('return ' + expression)(); // Evaluates
+                display.value = result;
+                resultDisplayed = true; // Set flag to indicate result is displayed
+            } catch (error) {
+                display.value = 'Error';
+                resultDisplayed = true;
+            }
+        }
+    </script>
+
+</body>
+</html>
+

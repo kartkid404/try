@@ -1,0 +1,68 @@
+/* Added for stylistic purposes. */
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+body {
+    background-color: #205781;
+}
+
+.calculator {
+    width: 300px;
+    margin: 50px auto;
+    border: 8px solid #98D2C0;
+    border-radius: 1px;
+    outline: 10px solid #4F959D;
+    padding: 20px;
+    text-align: center;
+    background-color: #F6F8D5;
+}
+
+input[type="text"] {
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Edited the button tag to be a little more personalised */
+
+button {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    font-size: 16px;
+    background-color: #DDEB9D ;
+    border-color: #A0C878 ;
+}
+
+button:hover {
+    background-color: #c5d389 ;
+    transform: scale(105%);
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
+
+/* Using distinct colors for numbers, operators, and special characters to enhance usability and visual clarity */
+
+.bigBtn {
+    width: 115px;
+    background-color: #FDF7F4 ;
+    border-color: #8EB486;
+}
+
+#checkResult {
+    background-color: #FFF5E4;
+    border-color: #FFA725;
+}
+
+.operator {
+    background-color: #FBFFE4;
+    border-color: #A3D1C6 ;
+}
+
+.other {
+    background-color: #EFE3C2 ;
+    border-color: #85A947;
+}
